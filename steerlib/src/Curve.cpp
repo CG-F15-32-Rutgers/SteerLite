@@ -62,20 +62,27 @@ void Curve::drawCurve(Color curveColor, float curveThickness, int window)
 #endif
 }
 
+//Compare two CurvePoints
+bool compareCurvePoints(const CurvePoint point1, const CurvePoint point2) {
+	return point1.time < point2.time;
+}
+
 // Sort controlPoints vector in ascending order: min-first
 void Curve::sortControlPoints()
 {
-	//================DELETE THIS PART AND THEN START CODING===================
+	sort(controlPoints.begin(), controlPoints.end(), compareCurvePoints);
+	/*================DELETE THIS PART AND THEN START CODING===================
 	static bool flag = false;
 	if (!flag)
 	{
 		std::cerr << "ERROR>>>>Member function sortControlPoints is not implemented!" << std::endl;
 		flag = true;
 	}
-	//=========================================================================
+	*///=========================================================================
 
 	return;
 }
+
 
 // Calculate the position on curve corresponding to the given time, outputPoint is the resulting position
 bool Curve::calculatePoint(Point& outputPoint, float time)
@@ -109,14 +116,18 @@ bool Curve::calculatePoint(Point& outputPoint, float time)
 // Check Roboustness
 bool Curve::checkRobust()
 {
-	//================DELETE THIS PART AND THEN START CODING===================
+	if (controlPoints.size() < 2) 
+	{
+		return false;
+	}
+	/*================DELETE THIS PART AND THEN START CODING===================
 	static bool flag = false;
 	if (!flag)
 	{
 		std::cerr << "ERROR>>>>Member function checkRobust is not implemented!" << std::endl;
 		flag = true;
 	}
-	//=========================================================================
+	=========================================================================*/
 
 
 	return true;

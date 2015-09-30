@@ -1,5 +1,21 @@
-﻿Build started 9/22/2015 12:41:55 AM.
+﻿Build started 9/29/2015 8:56:24 PM.
+     1>Project "C:\Users\Owner\Documents\GitHub\SteerLite\steerbench\build\win32\steerbench.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I..\..\..\util\include /I..\..\include /I..\..\..\steerlib\include /I..\..\..\external\ /Zi /nologo /W3 /WX- /MP /O2 /Oi /Ot /GL /D ENABLE_GUI /D _MBCS /Gm- /EHsc /MD /GS /Gy /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /errorReport:prompt ..\..\src\Main.cpp
+     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
+         Main.cpp
+     1>c:\users\owner\documents\github\steerlite\util\include\UtilGlobals.h(17): warning C4005: 'UTIL_API': macro redefinition
+         c:\users\owner\documents\github\steerlite\steerlib\include\Globals.h(22): note: see previous definition of 'UTIL_API'
+     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerbench.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\ util.lib steerlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerbench.pdb" /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerbench.lib" /MACHINE:X64 Release\Main.obj
+            Creating library C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerbench.lib and object C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerbench.exp
+         Generating code
+         Finished generating code
+         All 655 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+         steerbench.vcxproj -> C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerbench.exe
+     1>Done Building Project "C:\Users\Owner\Documents\GitHub\SteerLite\steerbench\build\win32\steerbench.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.01
+Time Elapsed 00:00:04.97

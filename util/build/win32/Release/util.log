@@ -1,5 +1,124 @@
-﻿Build started 9/22/2015 12:41:55 AM.
+﻿Build started 9/29/2015 8:56:03 PM.
+     1>Project "C:\Users\Owner\Documents\GitHub\SteerLite\util\build\win32\util.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I..\..\include /I..\..\..\external /Zi /nologo /W3 /WX- /MP /O2 /Oi /Ot /GL /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /errorReport:prompt ..\..\src\LogData.cpp ..\..\src\Logger.cpp ..\..\src\LogManager.cpp ..\..\src\LogObject.cpp
+     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
+     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
+         LogData.cpp
+     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
+         Logger.cpp
+     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
+         LogManager.cpp
+     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
+         LogObject.cpp
+     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(23): warning C4251: 'DataItem::string': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of struct 'DataItem' (compiling source file ..\..\src\LogData.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(92): warning C4251: 'LogObject::_record': class 'std::vector<DataItem,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'LogObject'
+                 with
+                 [
+                     _Ty=DataItem
+                 ] (compiling source file ..\..\src\LogData.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\LogData.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\Logger.h(64): warning C4251: 'Logger::_fileStream': class 'std::basic_fstream<char,std::char_traits<char>>' needs to have dll-interface to be used by clients of class 'Logger' (compiling source file ..\..\src\LogData.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\Logger.h(65): warning C4251: 'Logger::_fileName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Logger' (compiling source file ..\..\src\LogData.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\Logger.h(68): warning C4251: 'Logger::_fieldNames': class 'std::vector<std::string,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+                 with
+                 [
+                     _Ty=std::string
+                 ] (compiling source file ..\..\src\LogData.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\Logger.h(69): warning C4251: 'Logger::_dataTypes': class 'std::vector<DataType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+                 with
+                 [
+                     _Ty=DataType
+                 ] (compiling source file ..\..\src\LogData.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(23): warning C4251: 'DataItem::string': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of struct 'DataItem' (compiling source file ..\..\src\LogManager.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(92): warning C4251: 'LogObject::_record': class 'std::vector<DataItem,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'LogObject'
+                 with
+                 [
+                     _Ty=DataItem
+                 ] (compiling source file ..\..\src\LogManager.cpp)
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\LogData.h(33): warning C4251: 'LogData::logData': class 'std::vector<LogObject *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'LogData'
+                 with
+                 [
+                     _Ty=LogObject *
+                 ] (compiling source file ..\..\src\LogData.cpp)
+     1>..\..\src\LogData.cpp(66): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+     1>..\..\src\LogData.cpp(74): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\LogManager.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\Logger.h(64): warning C4251: 'Logger::_fileStream': class 'std::basic_fstream<char,std::char_traits<char>>' needs to have dll-interface to be used by clients of class 'Logger' (compiling source file ..\..\src\LogManager.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\Logger.h(65): warning C4251: 'Logger::_fileName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Logger' (compiling source file ..\..\src\LogManager.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\Logger.h(68): warning C4251: 'Logger::_fieldNames': class 'std::vector<std::string,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+                 with
+                 [
+                     _Ty=std::string
+                 ] (compiling source file ..\..\src\LogManager.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\Logger.h(69): warning C4251: 'Logger::_dataTypes': class 'std::vector<DataType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+                 with
+                 [
+                     _Ty=DataType
+                 ] (compiling source file ..\..\src\LogManager.cpp)
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\LogManager.h(35): warning C4251: 'LogManager::_loggers': class 'std::map<std::string,Logger *,std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'LogManager'
+                 with
+                 [
+                     _Kty=std::string,
+                     _Ty=Logger *
+                 ] (compiling source file ..\..\src\LogManager.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(23): warning C4251: 'DataItem::string': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of struct 'DataItem' (compiling source file ..\..\src\Logger.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(92): warning C4251: 'LogObject::_record': class 'std::vector<DataItem,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'LogObject'
+                 with
+                 [
+                     _Ty=DataItem
+                 ] (compiling source file ..\..\src\Logger.cpp)
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\LogObject.h(23): warning C4251: 'DataItem::string': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of struct 'DataItem' (compiling source file ..\..\src\LogObject.cpp)
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\LogObject.h(92): warning C4251: 'LogObject::_record': class 'std::vector<DataItem,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'LogObject'
+                 with
+                 [
+                     _Ty=DataItem
+                 ] (compiling source file ..\..\src\LogObject.cpp)
+     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\Logger.cpp)
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\Logger.h(64): warning C4251: 'Logger::_fileStream': class 'std::basic_fstream<char,std::char_traits<char>>' needs to have dll-interface to be used by clients of class 'Logger' (compiling source file ..\..\src\Logger.cpp)
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\Logger.h(65): warning C4251: 'Logger::_fileName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Logger' (compiling source file ..\..\src\Logger.cpp)
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\Logger.h(68): warning C4251: 'Logger::_fieldNames': class 'std::vector<std::string,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+                 with
+                 [
+                     _Ty=std::string
+                 ] (compiling source file ..\..\src\Logger.cpp)
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\Logger.h(69): warning C4251: 'Logger::_dataTypes': class 'std::vector<DataType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+                 with
+                 [
+                     _Ty=DataType
+                 ] (compiling source file ..\..\src\Logger.cpp)
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\LogObject.cpp)
+     1>..\..\src\Logger.cpp(169): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+     1>..\..\src\Logger.cpp(286): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+     1>..\..\src\Logger.cpp(288): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+     1>..\..\src\Logger.cpp(292): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+     1>..\..\src\Logger.cpp(294): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\LogObject.h(51): warning C4244: '=': conversion from 'int' to 'float', possible loss of data (compiling source file ..\..\src\LogObject.cpp)
+         ..\..\src\LogObject.cpp(34): note: see reference to function template instantiation 'void LogObject::addLogData<int>(T)' being compiled
+                 with
+                 [
+                     T=int
+                 ]
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\LogObject.h(43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data (compiling source file ..\..\src\LogObject.cpp)
+         ..\..\src\LogObject.cpp(60): note: see reference to function template instantiation 'void LogObject::addLogData<float>(T)' being compiled
+                 with
+                 [
+                     T=float
+                 ]
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\LogObject.h(56): warning C4244: '=': conversion from 'float' to '__int64', possible loss of data (compiling source file ..\..\src\LogObject.cpp)
+     1>C:\Users\Owner\Documents\GitHub\SteerLite\util\include\LogObject.h(61): warning C4244: 'argument': conversion from 'float' to 'char', possible loss of data (compiling source file ..\..\src\LogObject.cpp)
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\util.dll" /INCREMENTAL:NO /NOLOGO opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\util.pdb" /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\util.lib" /MACHINE:X64 /DLL Release\LogData.obj
+         Release\Logger.obj
+         Release\LogManager.obj
+         Release\LogObject.obj
+            Creating library C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\util.lib and object C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\util.exp
+         Generating code
+         All 843 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+         Finished generating code
+         util.vcxproj -> C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\util.dll
+     1>Done Building Project "C:\Users\Owner\Documents\GitHub\SteerLite\util\build\win32\util.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.01
+Time Elapsed 00:00:04.36
