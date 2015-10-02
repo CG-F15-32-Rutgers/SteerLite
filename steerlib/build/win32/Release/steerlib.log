@@ -1,200 +1,11 @@
-﻿Build started 9/29/2015 8:56:08 PM.
+﻿Build started 10/2/2015 7:26:06 PM.
      1>Project "C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\build\win32\steerlib.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I..\..\..\util\include /I..\..\include /I..\..\..\external /Zi /nologo /W3 /WX- /MP /O2 /Oi /Ot /GL /D _COMPILING_WIN32_STEERLIB /D ENABLE_GUI /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /errorReport:prompt ..\..\src\AgentMetricsCollector.cpp ..\..\src\BehaviorParameter.cpp ..\..\src\Behaviour.cpp ..\..\src\BenchmarkEngine.cpp ..\..\src\CompositeTechnique01.cpp ..\..\src\CompositeTechnique02.cpp ..\..\src\CompositeTechniquePLE.cpp ..\..\src\Curve.cpp ..\..\src\FrameSaver.cpp ..\..\src\OrientedWallObstacle.cpp ..\..\src\SimulationMetricsCollector.cpp ..\..\src\GridDatabase2D.cpp ..\..\src\CommandLineParser.cpp ..\..\src\DrawLib.cpp ..\..\src\DynamicLibrary.cpp ..\..\src\HighResCounter.cpp ..\..\src\MemoryMapper.cpp ..\..\src\Misc.cpp ..\..\src\PerformanceProfiler.cpp ..\..\src\StateMachine.cpp ..\..\src\ThreadedTaskManager.cpp ..\..\src\XMLParser.cpp ..\..\src\RecFileReader.cpp ..\..\src\RecFileWriter.cpp ..\..\src\TestCaseReader.cpp ..\..\src\TestCaseReaderPrivate.cpp ..\..\src\TestCaseWriter.cpp ..\..\src\Camera.cpp ..\..\src\Clock.cpp ..\..\src\SimulationEngine.cpp ..\..\src\SimulationOptions.cpp ..\..\src\SteeringCommand.cpp ..\..\src\BoxObstacle.cpp ..\..\src\CircleObstacle.cpp ..\..\src\OrientedBoxObstacle.cpp ..\..\src\RecFilePlayerModule.cpp ..\..\src\SimulationRecorderModule.cpp ..\..\src\TestCasePlayerModule.cpp ..\..\..\external\tinyxml\ticpp.cpp ..\..\..\external\tinyxml\tinystr.cpp ..\..\..\external\tinyxml\tinyxml.cpp ..\..\..\external\tinyxml\tinyxmlerror.cpp ..\..\..\external\tinyxml\tinyxmlparser.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I..\..\..\util\include /I..\..\include /I..\..\..\external /Zi /nologo /W3 /WX- /MP /O2 /Oi /Ot /GL /D _COMPILING_WIN32_STEERLIB /D ENABLE_GUI /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /errorReport:prompt ..\..\src\Curve.cpp
      1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
-     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
-         AgentMetricsCollector.cpp
-     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
-         BehaviorParameter.cpp
-     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
-         Behaviour.cpp
-     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
-         BenchmarkEngine.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\AgentMetricsCollector.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\AgentMetricsCollector.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\AgentMetricsCollector.cpp)
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\BenchmarkEngine.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\BenchmarkEngine.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\BenchmarkEngine.cpp)
-         CompositeTechnique01.cpp
-         CompositeTechnique02.cpp
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\BenchmarkEngine.cpp)
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\CompositeTechnique01.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\CompositeTechnique01.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\CompositeTechnique01.cpp)
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\CompositeTechnique02.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\CompositeTechnique02.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\CompositeTechnique02.cpp)
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\CompositeTechnique01.cpp)
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\CompositeTechnique02.cpp)
-         CompositeTechniquePLE.cpp
          Curve.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\CompositeTechniquePLE.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\CompositeTechniquePLE.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\CompositeTechniquePLE.cpp)
-         FrameSaver.cpp
-         OrientedWallObstacle.cpp
-     1>..\..\src\Curve.cpp(89): warning C4101: 'intervalTime': unreferenced local variable
-     1>..\..\src\Curve.cpp(89): warning C4101: 'normalTime': unreferenced local variable
-     1>..\..\src\Curve.cpp(145): warning C4101: 'intervalTime': unreferenced local variable
-     1>..\..\src\Curve.cpp(145): warning C4101: 'normalTime': unreferenced local variable
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\CompositeTechniquePLE.cpp)
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\OrientedWallObstacle.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\OrientedWallObstacle.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\OrientedWallObstacle.cpp)
-         SimulationMetricsCollector.cpp
-     1>..\..\src\FrameSaver.cpp(47): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-     1>..\..\src\FrameSaver.cpp(50): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
-     1>..\..\src\FrameSaver.cpp(53): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\obstacles/OrientedWallObstacle.h(39): warning C4251: 'SteerLib::OrientedWallObstacle::_wallSections': class 'std::vector<SteerLib::OrientedBoxObstacle *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'SteerLib::OrientedWallObstacle'
-                 with
-                 [
-                     _Ty=SteerLib::OrientedBoxObstacle *
-                 ] (compiling source file ..\..\src\OrientedWallObstacle.cpp)
-     1>..\..\src\OrientedWallObstacle.cpp(40): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>..\..\src\OrientedWallObstacle.cpp(42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>..\..\src\OrientedWallObstacle.cpp(60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>..\..\src\OrientedWallObstacle.cpp(62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-         GridDatabase2D.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\SimulationMetricsCollector.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\SimulationMetricsCollector.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\SimulationMetricsCollector.cpp)
-         CommandLineParser.cpp
-         DrawLib.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\GridDatabase2D.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\GridDatabase2D.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\GridDatabase2D.cpp)
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\CommandLineParser.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\CommandLineParser.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\CommandLineParser.cpp)
-     1>..\..\src\GridDatabase2D.cpp(245): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-     1>..\..\src\GridDatabase2D.cpp(443): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-     1>..\..\src\DrawLib.cpp(242): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-     1>..\..\src\DrawLib.cpp(258): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-         DynamicLibrary.cpp
-         HighResCounter.cpp
-         MemoryMapper.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\DynamicLibrary.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\DynamicLibrary.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\DynamicLibrary.cpp)
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\HighResCounter.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\HighResCounter.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\HighResCounter.cpp)
-         Misc.cpp
-         PerformanceProfiler.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\MemoryMapper.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\MemoryMapper.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\MemoryMapper.cpp)
-         StateMachine.cpp
-         ThreadedTaskManager.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\StateMachine.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\StateMachine.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\StateMachine.cpp)
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\Misc.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\Misc.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\Misc.cpp)
-         XMLParser.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\ThreadedTaskManager.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\ThreadedTaskManager.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\ThreadedTaskManager.cpp)
-         RecFileReader.cpp
-     1>..\..\src\ThreadedTaskManager.cpp(286): warning C4996: 'GetVersionExA': was declared deprecated
-         C:\Program Files (x86)\Windows Kits\8.1\Include\um\sysinfoapi.h(433): note: see declaration of 'GetVersionExA'
-         RecFileWriter.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\RecFileReader.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\RecFileReader.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\RecFileReader.cpp)
-         TestCaseReader.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\XMLParser.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\XMLParser.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\XMLParser.cpp)
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\RecFileWriter.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\RecFileWriter.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\RecFileWriter.cpp)
-         TestCaseReaderPrivate.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\TestCaseReader.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\TestCaseReader.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\TestCaseReader.cpp)
-     1>..\..\src\RecFileWriter.cpp(104): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-     1>..\..\src\RecFileWriter.cpp(105): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-     1>..\..\src\RecFileWriter.cpp(119): warning C4244: '=': conversion from 'std::streamoff' to 'unsigned int', possible loss of data
-     1>..\..\src\RecFileWriter.cpp(167): warning C4244: '=': conversion from 'std::streamoff' to 'unsigned int', possible loss of data
-     1>..\..\src\RecFileWriter.cpp(170): warning C4244: '=': conversion from 'std::streamoff' to 'unsigned int', possible loss of data
-     1>..\..\src\RecFileWriter.cpp(173): warning C4244: '=': conversion from 'std::streamoff' to 'unsigned int', possible loss of data
-     1>..\..\src\RecFileWriter.cpp(237): warning C4244: '=': conversion from 'std::streamoff' to 'unsigned int', possible loss of data
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\TestCaseReaderPrivate.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\TestCaseReaderPrivate.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\TestCaseReaderPrivate.cpp)
-         TestCaseWriter.cpp
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\TestCaseReader.cpp)
-         Camera.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\TestCaseWriter.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\TestCaseWriter.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\TestCaseWriter.cpp)
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\TestCaseReaderPrivate.cpp)
-         Clock.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\Camera.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\Camera.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\Camera.cpp)
-     1>..\..\src\Camera.cpp(171): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>..\..\src\Camera.cpp(172): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\TestCaseWriter.cpp)
-         SimulationEngine.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\Clock.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\Clock.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\Clock.cpp)
-         SimulationOptions.cpp
-     1>..\..\src\TestCaseWriter.cpp(35): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
-     1>..\..\src\TestCaseWriter.cpp(54): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\SimulationEngine.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\SimulationEngine.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\SimulationEngine.cpp)
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\SimulationOptions.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\SimulationOptions.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\SimulationOptions.cpp)
-         SteeringCommand.cpp
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\SimulationEngine.cpp)
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\SimulationOptions.cpp)
-     1>..\..\src\SimulationEngine.cpp(162): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-     1>..\..\src\SimulationEngine.cpp(1005): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-         BoxObstacle.cpp
-         CircleObstacle.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\BoxObstacle.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\BoxObstacle.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\BoxObstacle.cpp)
-         OrientedBoxObstacle.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\CircleObstacle.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\CircleObstacle.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\CircleObstacle.cpp)
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\OrientedBoxObstacle.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\OrientedBoxObstacle.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\OrientedBoxObstacle.cpp)
-         RecFilePlayerModule.cpp
-         SimulationRecorderModule.cpp
-         TestCasePlayerModule.cpp
-         ticpp.cpp
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\SimulationRecorderModule.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\SimulationRecorderModule.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\SimulationRecorderModule.cpp)
-     1>C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\TestCasePlayerModule.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\TestCasePlayerModule.cpp)
-         C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\TestCasePlayerModule.cpp)
-     1>c:\users\owner\documents\github\steerlite\steerlib\include\util/GenericException.h(57): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException' (compiling source file ..\..\src\RecFilePlayerModule.cpp)
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h(43): note: see declaration of 'std::exception' (compiling source file ..\..\src\RecFilePlayerModule.cpp)
-         c:\users\owner\documents\github\steerlite\steerlib\include\util/GenericException.h(56): note: see declaration of 'Util::GenericException' (compiling source file ..\..\src\RecFilePlayerModule.cpp)
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\SimulationRecorderModule.cpp)
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\TestCasePlayerModule.cpp)
-         tinystr.cpp
-         tinyxml.cpp
-     1>c:\users\owner\documents\github\steerlite\util\include\LogObject.h(85): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file ..\..\src\RecFilePlayerModule.cpp)
-         tinyxmlerror.cpp
-         tinyxmlparser.cpp
+     1>..\..\src\Curve.cpp(88): warning C4101: 'intervalTime': unreferenced local variable
+     1>..\..\src\Curve.cpp(88): warning C4101: 'normalTime': unreferenced local variable
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\ util.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.pdb" /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.lib" /MACHINE:X64 /DLL Release\AgentMetricsCollector.obj
          Release\BehaviorParameter.obj
@@ -241,11 +52,13 @@
          Release\tinyxmlparser.obj
             Creating library C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.lib and object C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.exp
          Generating code
-         All 8666 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+         51 of 8705 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+           39 functions were new in current compilation
+           45 functions had inline decision re-evaluated but remain unchanged
          Finished generating code
          steerlib.vcxproj -> C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.dll
      1>Done Building Project "C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\build\win32\steerlib.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:16.13
+Time Elapsed 00:00:10.17

@@ -1,36 +1,6 @@
-﻿Build started 9/29/2015 8:56:03 PM.
-     1>Project "C:\Users\Owner\Documents\GitHub\SteerLite\external\glfw\win32\glfw.vcxproj" on node 3 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I..\ /I..\lib\ /I..\lib\win32 /I..\include /Zi /nologo /W3 /WX- /MP /O2 /Oi /Ot /GL /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TC /errorReport:prompt ..\lib\enable.c ..\lib\fullscreen.c ..\lib\glext.c ..\lib\image.c ..\lib\init.c ..\lib\input.c ..\lib\joystick.c ..\lib\stream.c ..\lib\tga.c ..\lib\thread.c ..\lib\time.c ..\lib\win32\win32_dllmain.c ..\lib\win32\win32_enable.c ..\lib\win32\win32_fullscreen.c ..\lib\win32\win32_glext.c ..\lib\win32\win32_init.c ..\lib\win32\win32_joystick.c ..\lib\win32\win32_thread.c ..\lib\win32\win32_time.c ..\lib\win32\win32_window.c ..\lib\window.c
-     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
-     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
-         enable.c
-     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
-         fullscreen.c
-     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
-         glext.c
-     1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
-         image.c
-         init.c
-         input.c
-         joystick.c
-         stream.c
-         tga.c
-         thread.c
-         time.c
-         win32_dllmain.c
-         win32_enable.c
-         win32_fullscreen.c
-         win32_glext.c
-         win32_init.c
-         win32_joystick.c
-         win32_thread.c
-         win32_time.c
-     1>..\lib\win32\win32_init.c(237): warning C4996: 'GetVersionExA': was declared deprecated
-         C:\Program Files (x86)\Windows Kits\8.1\Include\um\sysinfoapi.h(433): note: see declaration of 'GetVersionExA'
-         win32_window.c
-         window.c
-       Link:
+﻿Build started 10/2/2015 7:21:25 PM.
+     1>Project "C:\Users\Owner\Documents\GitHub\SteerLite\external\glfw\win32\glfw.vcxproj" on node 2 (Build target(s)).
+     1>Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\glfw.dll" /INCREMENTAL:NO /NOLOGO opengl32.Lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"..\..\..\external\glfw\lib\win32\glfwdll.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\glfw.pdb" /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\glfw.lib" /MACHINE:X64 /DLL Release\enable.obj
          Release\fullscreen.obj
          Release\glext.obj
@@ -54,11 +24,13 @@
          Release\window.obj
             Creating library C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\glfw.lib and object C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\glfw.exp
          Generating code
-         All 176 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+         0 of 176 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+           0 functions were new in current compilation
+           0 functions had inline decision re-evaluated but remain unchanged
          Finished generating code
          glfw.vcxproj -> C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\glfw.dll
      1>Done Building Project "C:\Users\Owner\Documents\GitHub\SteerLite\external\glfw\win32\glfw.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.77
+Time Elapsed 00:00:04.81

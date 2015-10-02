@@ -71,14 +71,6 @@ bool compareCurvePoints(const CurvePoint point1, const CurvePoint point2) {
 void Curve::sortControlPoints()
 {
 	sort(controlPoints.begin(), controlPoints.end(), compareCurvePoints);
-	/*================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function sortControlPoints is not implemented!" << std::endl;
-		flag = true;
-	}
-	*///=========================================================================
 
 	return;
 }
@@ -120,15 +112,6 @@ bool Curve::checkRobust()
 	{
 		return false;
 	}
-	/*================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function checkRobust is not implemented!" << std::endl;
-		flag = true;
-	}
-	=========================================================================*/
-
 
 	return true;
 }
@@ -136,15 +119,16 @@ bool Curve::checkRobust()
 // Find the current time interval (i.e. index of the next control point to follow according to current time)
 bool Curve::findTimeInterval(unsigned int& nextPoint, float time)
 {
-	//================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function findTimeInterval is not implemented!" << std::endl;
-		flag = true;
-	}
-	//=========================================================================
+	int index = 0;
 
+	for (index; index < controlPoints.size(); ++index)
+	{
+		if (controlPoints[index].time > time)
+		{
+			nextPoint = index;
+			return true;
+		}
+	}
 
 	return true;
 }
@@ -154,22 +138,21 @@ Point Curve::useHermiteCurve(const unsigned int nextPoint, const float time)
 {
 	Point newPosition;
 	float normalTime, intervalTime;
+	
+	CurvePoint point1 = controlPoints[nextPoint - 1];
+	CurvePoint point2 = controlPoints[nextPoint];
 
-	//================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function useHermiteCurve is not implemented!" << std::endl;
-		flag = true;
-	}
-	//=========================================================================
+	normalTime = time - point1.time;
+	intervalTime = point2.time - point1.time;
+	float s = normalTime / intervalTime;
 
+	float h1 = 2 * pow(s, 3) - 3 * pow(s, 2) + 1;
+	float h2 = -2 * pow(s, 3) + 3 * pow(s, 2);
+	float h3 = pow(normalTime,3)/pow(intervalTime, 2) - 2 * pow(normalTime, 2)/intervalTime + normalTime;
+	float h4 = pow(normalTime, 3) / pow(intervalTime, 2) - pow(normalTime, 2) / intervalTime;
 
-	// Calculate time interval, and normal time required for later curve calculations
+	newPosition = h1*point1.position + h2*point2.position + h3*point1.tangent + h4*point2.tangent;
 
-	// Calculate position at t = time on Hermite curve
-
-	// Return result
 	return newPosition;
 }
 
