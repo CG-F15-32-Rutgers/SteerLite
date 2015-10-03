@@ -45,18 +45,14 @@ void Curve::drawCurve(Color curveColor, float curveThickness, int window)
 {
 #ifdef ENABLE_GUI
 
-	//================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function drawCurve is not implemented!" << std::endl;
-		flag = true;
-	}
-	//=========================================================================
-
 	// Robustness: make sure there is at least two control point: start and end points
+	if(!checkRobust())
+	{
+		return;
+	}
 
 	// Move on the curve from t=0 to t=finalPoint, using window as step size, and linearly interpolate the curve points
+
 	
 	return;
 #endif
@@ -151,7 +147,9 @@ Point Curve::useHermiteCurve(const unsigned int nextPoint, const float time)
 	float h3 = pow(normalTime,3)/pow(intervalTime, 2) - 2 * pow(normalTime, 2)/intervalTime + normalTime;
 	float h4 = pow(normalTime, 3) / pow(intervalTime, 2) - pow(normalTime, 2) / intervalTime;
 
-	newPosition = h1*point1.position + h2*point2.position + h3*point1.tangent + h4*point2.tangent;
+	newPosition.x = h1*point1.position.x + h2*point2.position.x + h3*point1.tangent.x + h4*point2.tangent.x;
+	newPosition.y = h1*point1.position.y + h2*point2.position.y + h3*point1.tangent.y + h4*point2.tangent.y;
+	newPosition.z = h1*point1.position.z + h2*point2.position.z + h3*point1.tangent.z + h4*point2.tangent.z;
 
 	return newPosition;
 }
