@@ -45,37 +45,45 @@ void Curve::drawCurve(Color curveColor, float curveThickness, int window)
 {
 #ifdef ENABLE_GUI
 
-	//================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function drawCurve is not implemented!" << std::endl;
-		flag = true;
-	}
-	//=========================================================================
-
 	// Robustness: make sure there is at least two control point: start and end points
+	if(!checkRobust())
+	{
+		return;
+	}
 
 	// Move on the curve from t=0 to t=finalPoint, using window as step size, and linearly interpolate the curve points
+	float startTime = controlPoints.front().time; // start time 
+	float endTime = controlPoints.back().time; // end time 
+	Point prevPoint = controlPoints.front().position; // start position
+	Point currentPoint;
+
+	for (float t = startTime; t <= endTime; t += window) { // loop using the final time and incrementing time through window 
+		if (t > endTime - window) //if it's the final point
+			currentPoint = controlPoints.back().position;
+		else {
+			calculatePoint(currentPoint, t);
+			DrawLib::drawLine(prevPoint, currentPoint, curveColor, curveThickness);
+			prevPoint = currentPoint;
+		}
+	}
 	
 	return;
 #endif
 }
 
+//Compare two CurvePoints
+bool compareCurvePoints(const CurvePoint point1, const CurvePoint point2) {
+	return point1.time < point2.time;
+}
+
 // Sort controlPoints vector in ascending order: min-first
 void Curve::sortControlPoints()
 {
-	//================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function sortControlPoints is not implemented!" << std::endl;
-		flag = true;
-	}
-	//=========================================================================
+	sort(controlPoints.begin(), controlPoints.end(), compareCurvePoints);
 
 	return;
 }
+
 
 // Calculate the position on curve corresponding to the given time, outputPoint is the resulting position
 bool Curve::calculatePoint(Point& outputPoint, float time)
@@ -109,15 +117,10 @@ bool Curve::calculatePoint(Point& outputPoint, float time)
 // Check Roboustness
 bool Curve::checkRobust()
 {
-	//================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
+	if (controlPoints.size() < 2) 
 	{
-		std::cerr << "ERROR>>>>Member function checkRobust is not implemented!" << std::endl;
-		flag = true;
+		return false;
 	}
-	//=========================================================================
-
 
 	return true;
 }
@@ -125,15 +128,16 @@ bool Curve::checkRobust()
 // Find the current time interval (i.e. index of the next control point to follow according to current time)
 bool Curve::findTimeInterval(unsigned int& nextPoint, float time)
 {
-	//================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function findTimeInterval is not implemented!" << std::endl;
-		flag = true;
-	}
-	//=========================================================================
+	int index = 0;
 
+	for (index; index < controlPoints.size(); ++index)
+	{
+		if (controlPoints[index].time > time)
+		{
+			nextPoint = index;
+			return true;
+		}
+	}
 
 	return true;
 }
@@ -143,22 +147,21 @@ Point Curve::useHermiteCurve(const unsigned int nextPoint, const float time)
 {
 	Point newPosition;
 	float normalTime, intervalTime;
+	
+	CurvePoint point1 = controlPoints[nextPoint - 1];
+	CurvePoint point2 = controlPoints[nextPoint];
 
-	//================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function useHermiteCurve is not implemented!" << std::endl;
-		flag = true;
-	}
-	//=========================================================================
+	normalTime = time - point1.time;
+	intervalTime = point2.time - point1.time;
+	float s = normalTime / intervalTime;
 
+	float h1 = 2 * pow(s, 3) - 3 * pow(s, 2) + 1;
+	float h2 = -2 * pow(s, 3) + 3 * pow(s, 2);
+	float h3 = pow(normalTime,3)/pow(intervalTime, 2) - 2 * pow(normalTime, 2)/intervalTime + normalTime;
+	float h4 = pow(normalTime, 3) / pow(intervalTime, 2) - pow(normalTime, 2) / intervalTime;
 
-	// Calculate time interval, and normal time required for later curve calculations
+	newPosition = h1*point1.position + h2*point2.position + h3*point1.tangent + h4*point2.tangent;
 
-	// Calculate position at t = time on Hermite curve
-
-	// Return result
 	return newPosition;
 }
 
