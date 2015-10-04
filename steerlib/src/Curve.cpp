@@ -46,17 +46,18 @@ void Curve::drawCurve(Color curveColor, float curveThickness, int window)
 #ifdef ENABLE_GUI
 
 	// Robustness: make sure there is at least two control point: start and end points
-	if(!checkRobust())
+	if (!checkRobust())
 	{
 		return;
 	}
 
 	// Move on the curve from t=0 to t=finalPoint, using window as step size, and linearly interpolate the curve points
+	float startTime = controlPoints.front().time; // start time 
 	float endTime = controlPoints.back().time; // end time 
 	Point prevPoint = controlPoints.front().position; // start position
 	Point currentPoint;
 
-	for (float t = window; t <= endTime; t += window) { // loop using the final time and incrementing time through window 
+	for (float t = startTime; t <= endTime; t += window) { // loop using the final time and incrementing time through window 
 		if (t > endTime - window) //if it's the final point
 			currentPoint = controlPoints.back().position;
 		else {
@@ -65,7 +66,7 @@ void Curve::drawCurve(Color curveColor, float curveThickness, int window)
 			prevPoint = currentPoint;
 		}
 	}
-	
+
 	return;
 #endif
 }
@@ -159,9 +160,7 @@ Point Curve::useHermiteCurve(const unsigned int nextPoint, const float time)
 	float h3 = pow(normalTime,3)/pow(intervalTime, 2) - 2 * pow(normalTime, 2)/intervalTime + normalTime;
 	float h4 = pow(normalTime, 3) / pow(intervalTime, 2) - pow(normalTime, 2) / intervalTime;
 
-	newPosition.x = h1*point1.position.x + h2*point2.position.x + h3*point1.tangent.x + h4*point2.tangent.x;
-	newPosition.y = h1*point1.position.y + h2*point2.position.y + h3*point1.tangent.y + h4*point2.tangent.y;
-	newPosition.z = h1*point1.position.z + h2*point2.position.z + h3*point1.tangent.z + h4*point2.tangent.z;
+	newPosition = h1*point1.position + h2*point2.position + h3*point1.tangent + h4*point2.tangent;
 
 	return newPosition;
 }

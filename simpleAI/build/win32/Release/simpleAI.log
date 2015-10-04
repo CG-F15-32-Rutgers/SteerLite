@@ -1,4 +1,4 @@
-﻿Build started 10/3/2015 9:42:09 PM.
+﻿Build started 10/3/2015 9:55:41 PM.
      1>Project "C:\Users\Owner\Documents\GitHub\SteerLite\simpleAI\build\win32\simpleAI.vcxproj" on node 4 (Build target(s)).
      1>Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\simpleAI.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\ util.lib steerlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\simpleAI.pdb" /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\simpleAI.lib" /MACHINE:X64 /DLL Release\SimpleAgent.obj
@@ -14,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.17
+Time Elapsed 00:00:00.94

@@ -1,12 +1,11 @@
-﻿Build started 10/3/2015 9:42:05 PM.
-     1>Project "C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\build\win32\steerlib.vcxproj" on node 3 (Build target(s)).
+﻿Build started 10/3/2015 9:55:37 PM.
+     1>Project "C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\build\win32\steerlib.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I..\..\..\util\include /I..\..\include /I..\..\..\external /Zi /nologo /W3 /WX- /MP /O2 /Oi /Ot /GL /D _COMPILING_WIN32_STEERLIB /D ENABLE_GUI /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /errorReport:prompt ..\..\src\Curve.cpp
      1>cl : Command line warning D9002: ignoring unknown option '/arch:SSE2'
          Curve.cpp
-     1>..\..\src\Curve.cpp(59): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-     1>..\..\src\Curve.cpp(96): warning C4101: 'intervalTime': unreferenced local variable
-     1>..\..\src\Curve.cpp(96): warning C4101: 'normalTime': unreferenced local variable
+     1>..\..\src\Curve.cpp(97): warning C4101: 'intervalTime': unreferenced local variable
+     1>..\..\src\Curve.cpp(97): warning C4101: 'normalTime': unreferenced local variable
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\ util.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.pdb" /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.lib" /MACHINE:X64 /DLL Release\AgentMetricsCollector.obj
          Release\BehaviorParameter.obj
@@ -53,13 +52,13 @@
          Release\tinyxmlparser.obj
             Creating library C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.lib and object C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.exp
          Generating code
-         10 of 8711 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
-           8 functions were new in current compilation
-           2 functions had inline decision re-evaluated but remain unchanged
+         4 of 8713 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+           2 functions were new in current compilation
+           13 functions had inline decision re-evaluated but remain unchanged
          Finished generating code
          steerlib.vcxproj -> C:\Users\Owner\Documents\GitHub\SteerLite\build\win32\Release\steerlib.dll
      1>Done Building Project "C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\build\win32\steerlib.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.36
+Time Elapsed 00:00:03.50
