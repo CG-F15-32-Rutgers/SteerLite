@@ -81,43 +81,22 @@ void Curve::drawCurve(Color curveColor, float curveThickness, int window)
 #endif
 }
 
-//Compare two CurvePoints
-bool compareFunction(CurvePoint cp1, CurvePoint cp2) {
-	return (cp1.time < cp2.time);
+bool compareCurvePoints(CurvePoint point1, CurvePoint point2) {
+	return (point1.time < point2.time);
 }
 
-bool compareSameTime(CurvePoint cp1, CurvePoint cp2) {
-	return (cp1.time == cp2.time);
+bool isTimeEqual(CurvePoint point1, CurvePoint point2) {
+	return (point1.time == point2.time);
 }
 
+// // Sort controlPoints vector in ascending order: min-first
 void Curve::sortControlPoints()
 {
 
-	std::sort(controlPoints.begin(), controlPoints.end(), compareFunction);
-	controlPoints.erase(std::unique(controlPoints.begin(), controlPoints.end(), compareSameTime), controlPoints.end());
-
-	for(std::vector<CurvePoint>::iterator it = controlPoints.begin(); it <= controlPoints.end(); ++it) {
-		std::cout << it->time << std::endl;
-	}
+	sort(controlPoints.begin(), controlPoints.end(), compareCurvePoints);
+	controlPoints.erase(unique(controlPoints.begin(), controlPoints.end(), isTimeEqual), controlPoints.end());
 
 }
-
-// //Compare two CurvePoints
-// bool compareCurvePoints(const CurvePoint point1, const CurvePoint point2) {
-// 	return point1.time < point2.time;
-// }
-
-// // Sort controlPoints vector in ascending order: min-first
-// void Curve::sortControlPoints()
-// {
-// 	sort(controlPoints.begin(), controlPoints.end(), compareCurvePoints);
-
-// 	return;
-// }
-
-// Sort controlPoints vector in ascending order: min-first
-
-
 
 // Calculate the position on curve corresponding to the given time, outputPoint is the resulting position
 bool Curve::calculatePoint(Point& outputPoint, float time)
