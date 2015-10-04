@@ -58,13 +58,13 @@ void Curve::drawCurve(Color curveColor, float curveThickness, int window)
 	Point currentPoint;
 
 	for (float t = startTime; t <= endTime; t += window) { // loop using the final time and incrementing time through window 
-		if (t > endTime - window) //if it's the final point
+		if (t > endTime - window) { //if it's the final point
 			currentPoint = controlPoints.back().position;
-		else {
-			calculatePoint(currentPoint, t);
-			DrawLib::drawLine(prevPoint, currentPoint, curveColor, curveThickness);
-			prevPoint = currentPoint;
 		}
+
+		calculatePoint(currentPoint, t);
+		DrawLib::drawLine(prevPoint, currentPoint, curveColor, curveThickness);
+		prevPoint = currentPoint;
 	}
 	return;
 #endif
