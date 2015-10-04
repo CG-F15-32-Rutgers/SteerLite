@@ -191,14 +191,14 @@ Point Curve::useCatmullCurve(const unsigned int nextPoint, const float time)
 	float s = normalTime/intervalTime;
 	
 	if (nextPoint == 1) {
-		tan1 = 2*((p2-p1)) - ((controlPoints[nextPoint+1]-p1)/2);
-		tan2 = (controlPoints[nextPoint+1]-p1)/2;
+		tan1 = 2*((p2.position-p1.position)) - ((controlPoints[nextPoint+1].position-p1.position)/2);
+		tan2 = (controlPoints[nextPoint+1].position-p1.position)/2;
 	} else if (nextPoint == (controlPoints.size() - 1)) {
-		tan1 = (p2-controlPoints[nextPoint-2])/2;
-		tan2 = tan1 - (2*(p1-p2));
+		tan1 = (p2.position-controlPoints[nextPoint-2].position)/2;
+		tan2 = tan1 - (2*(p1.position-p2.position));
 	} else {
-		tan1 = (p2-controlPoints[nextPoint-2])/2;
-		tan2 = (controlPoints[nextPoint+1]-p1)/2;
+		tan1 = (p2.position-controlPoints[nextPoint-2].position)/2;
+		tan2 = (controlPoints[nextPoint+1].position-p1.position)/2;
 	}
 	
 	float h1 = 2*pow(s, 3) - 3*pow(s,2) + 1;
@@ -206,7 +206,7 @@ Point Curve::useCatmullCurve(const unsigned int nextPoint, const float time)
 	float h3 = pow(s,3) - 2*pow(s,2) + s;
 	float h4 = pow(s,3) - pow(s,2);
 	
-	newPosition = h1*p1 + h2*p2 + h3*t1 + h4*t2;
+	newPosition = h1*p1.position + h2*p2.position + h3*tan1 + h4*tan2;
 	
 	return newPosition;
 }
