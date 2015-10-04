@@ -138,7 +138,7 @@ bool Curve::findTimeInterval(unsigned int& nextPoint, float time)
 		}
 	}
 
-	return true;
+	return false;
 }
 
 // Implement Hermite curve
