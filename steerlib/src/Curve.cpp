@@ -52,7 +52,19 @@ void Curve::drawCurve(Color curveColor, float curveThickness, int window)
 	}
 
 	// Move on the curve from t=0 to t=finalPoint, using window as step size, and linearly interpolate the curve points
+	float endTime = controlPoints.back().time; // end time 
+	Point prevPoint = controlPoints.front().position; // start position
+	Point currentPoint;
 
+	for (float t = window; t <= endTime; t += window) { // loop using the final time and incrementing time through window 
+		if (t > endTime - window) //if it's the final point
+			currentPoint = controlPoints.back().position;
+		else {
+			calculatePoint(currentPoint, t);
+			DrawLib::drawLine(prevPoint, currentPoint, curveColor, curveThickness);
+			prevPoint = currentPoint;
+		}
+	}
 	
 	return;
 #endif
