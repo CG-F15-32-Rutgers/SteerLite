@@ -147,7 +147,7 @@ bool epa(float& return_penetration_depth, Util::Vector& return_penetration_vecto
 			return  true;
 		}
 		else {
-			simplex.insert(simplex.begin() + index, support);
+			simplex.insert(simplex.begin() + index, supp);
 		}
 	}
 }
