@@ -30,6 +30,32 @@ Util::Vector getFarthestPointInDirection(const Util::Vector dir, const std::vect
 	return point;
 }
 
+void getClosestEdge(float& dist, Util::Vector& normal, int& index, std::vector<Util::Vector>& simplex) 
+{
+	dist = FLT_MAX;
+	index = 0;
+
+	for (int i = 0, i < simplex.size(); ++i) {
+		int j = i+1 == simplex.size() ? 0 : i + 1;
+
+		Util::Vector A = simplex[i];
+		Util::Vector B = simplex[j];
+
+		Util::Vector C = B-A;
+
+		Util::Vector CPerp = Util::Vector(-C.z, C.y, C.x);
+		Util::Vector CPerpNorm = Util::normalize(CPerp);
+
+		float dot = dot(CPerpNorm, A);
+
+		if (dot < distance) {
+			distance = dot;
+			normal = CPerpNorm;
+			index = j;
+		}
+	}
+}
+
 Util::Vector support(const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB, const Util::Vector& dir)
 {
 	Util::Vector point1;
@@ -101,20 +127,39 @@ bool gjk(std::vector<Util::Vector> simplex, const std::vector<Util::Vector>& _sh
 		}
 	}
 }
+
+bool epa(float& return_penetration_depth, Util::Vector& return_penetration_vector, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB, std::vector<Util::Vector>& simplex) 
+{
+	while (true) {
+		float dist;
+		Util::Vector normal = Util::Vector(0,0,0);
+		int index;
+
+		getClosestEdge(dist, normal, index, simplex);
+
+		Util::Vector support = support(_shapeA, _shapeB, normal);
+
+		float dot = dot(support, normal);
+
+		if (dot - dist <= 0) {
+			return_penetration_depth = dist;
+			return_penetration_vector = normal;
+			return  true;
+		} else {
+			simplex.insert(simplex.begin() + index, support);
+		}
+	}
+}
+
 //Look at the GJK_EPA.h header file for documentation and instructions
 bool SteerLib::GJK_EPA::intersect(float& return_penetration_depth, Util::Vector& return_penetration_vector, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB)
 {
 	std::vector<Util::Vector> simplex;
 
-	if (gjk(simplex, _shapeA, _shapeB)) 
+	if (gjk(simplex, _shapeA, _shapeB))
 	{
-		return true;
+		epa(return_penetration_depth, return_penetration_vector, _shapeA, _shapeB, simplex);
 	}
-	else 
-	{
-		return_penetration_depth = 0;
-		return_penetration_vector.zero();
-		return false;
-	}
-    return false; // There is no collision
+
+    return false;
 }
