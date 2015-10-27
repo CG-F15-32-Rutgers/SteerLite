@@ -12,7 +12,7 @@ SteerLib::GJK_EPA::GJK_EPA()
 {
 }
 
-Util::Vector getFarthestPointInDirection(const Util::Vector dir, const std::vector<Util::Vector>& _shape)
+Util::Vector getFarthestPointInDirection(const Util::Vector& dir, const std::vector<Util::Vector>& _shape)
 {
 	float max = dot(*_shape.begin(), dir);
 	Util::Vector point;
@@ -67,7 +67,7 @@ Util::Vector support(const std::vector<Util::Vector>& _shapeA, const std::vector
 
 }
 
-bool inOrigin(std::vector<Util::Vector> simplex, Util::Vector D)
+bool inOrigin(std::vector<Util::Vector>& simplex, Util::Vector& D)
 {
 	Util::Vector CB = simplex[1] - simplex[2];
 	Util::Vector CA = simplex[0] - simplex[2];
@@ -93,7 +93,7 @@ bool inOrigin(std::vector<Util::Vector> simplex, Util::Vector D)
 	return true;
 
 }
-bool gjk(std::vector<Util::Vector> simplex, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB)
+bool gjk(std::vector<Util::Vector>& simplex, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB)
 {
 	Util::Vector dir1(1, 0, 0);
 	Util::Vector dir2(0, 0, 1);
@@ -111,14 +111,11 @@ bool gjk(std::vector<Util::Vector> simplex, const std::vector<Util::Vector>& _sh
 
 	while (true) {
 		Util::Vector C = support(_shapeA, _shapeB, D);
+		simplex.push_back(C);
 
 		if (dot(C, D) < 0)
 		{
 			return false;
-		}
-		else
-		{
-			simplex.push_back(C);
 		}
 
 		if (inOrigin(simplex, D))
@@ -163,5 +160,7 @@ bool SteerLib::GJK_EPA::intersect(float& return_penetration_depth, Util::Vector&
 		return true;
 	}
 
+	return_penetration_depth = 0;
+	return_penetration_vector.zero();
 	return false;
 }
