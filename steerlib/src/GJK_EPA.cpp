@@ -35,15 +35,16 @@ void getClosestEdge(float& dist, Util::Vector& normal, int& index, std::vector<U
 	dist = FLT_MAX;
 	index = 0;
 
-	for (int i = 0; i < simplex.size(); ++i) {
-		int j = i + 1 == simplex.size() ? 0 : i + 1;
+	for (int i = 0; i < simplex.size(); ++i) 
+	{
+		unsigned int j = (i + 1 == simplex.size()) ? 0 : i + 1;
 
 		Util::Vector A = simplex[i];
 		Util::Vector B = simplex[j];
 
 		Util::Vector C = B - A;
 
-		Util::Vector CPerp = Util::Vector(-C.z, C.y, C.x);
+		Util::Vector CPerp = Util::Vector(-C.z, C.y, C.x); //A*dot(C,C) - C*dot(A, C) cross(cross(C,A), C);
 		Util::Vector CPerpNorm = Util::normalize(CPerp);
 
 		float dt = dot(CPerpNorm, A);
@@ -69,28 +70,29 @@ Util::Vector support(const std::vector<Util::Vector>& _shapeA, const std::vector
 
 bool inOrigin(std::vector<Util::Vector>& simplex, Util::Vector& D)
 {
-	Util::Vector CB = simplex[1] - simplex[2];
-	Util::Vector CA = simplex[0] - simplex[2];
-	Util::Vector CO = -simplex[2];
 
-	Util::Vector CANorm = cross(cross(CB, CA), CA);
-	Util::Vector CBNorm = cross(cross(CA, CB), CB);
+		Util::Vector CB = simplex[1] - simplex[2];
+		Util::Vector CA = simplex[0] - simplex[2];
+		Util::Vector CO = -simplex[2];
 
-	if (dot(CANorm, CO) > 0)
-	{
-		simplex.erase(simplex.begin() + 1);
-		D = CANorm;
-		return false;
-	}
+		Util::Vector CANorm = cross(cross(CB, CA), CA);
+		Util::Vector CBNorm = cross(cross(CA, CB), CB);
 
-	if (dot(CBNorm, CO) > 0)
-	{
-		simplex.erase(simplex.begin());
-		D = CBNorm;
-		return false;
-	}
+		if (dot(CANorm, CO) > 0)
+		{
+			simplex.erase(simplex.begin() + 1);
+			D = CANorm;
+			return false;
+		}
 
-	return true;
+		if (dot(CBNorm, CO) > 0)
+		{
+			simplex.erase(simplex.begin());
+			D = CBNorm;
+			return false;
+		}
+
+		return true;
 
 }
 bool gjk(std::vector<Util::Vector>& simplex, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB)
@@ -109,9 +111,26 @@ bool gjk(std::vector<Util::Vector>& simplex, const std::vector<Util::Vector>& _s
 	simplex.push_back(A);
 	simplex.push_back(B);
 
+	if (A == (0, 0, 0) || B == (0, 0, 0))
+	{
+		return true;
+
+	}
+
+	if (dot(A, B) == -A.norm()*B.norm())
+	{
+		return true;
+	}
+
 	while (true) {
 		Util::Vector C = support(_shapeA, _shapeB, D);
 		simplex.push_back(C);
+
+		if (C == (0, 0, 0))
+		{
+	
+			return true;
+		}
 
 		if (dot(C, D) < 0)
 		{
@@ -127,6 +146,7 @@ bool gjk(std::vector<Util::Vector>& simplex, const std::vector<Util::Vector>& _s
 
 bool epa(float& return_penetration_depth, Util::Vector& return_penetration_vector, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB, std::vector<Util::Vector>& simplex)
 {
+
 	while (true) {
 		float dist;
 		Util::Vector normal = Util::Vector(0, 0, 0);
@@ -138,7 +158,7 @@ bool epa(float& return_penetration_depth, Util::Vector& return_penetration_vecto
 
 		float dt = dot(supp, normal);
 
-		if (dt - dist <= 0) {
+		if (dt - dist < 0.000001) {
 			return_penetration_depth = dist;
 			return_penetration_vector = normal;
 			return  true;
