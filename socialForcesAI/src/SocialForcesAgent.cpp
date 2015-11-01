@@ -237,7 +237,7 @@ std::pair<float, Util::Point> minimum_distance(Util::Point l1, Util::Point l2, U
 
 Util::Vector SocialForcesAgent::calcProximityForce(float dt)
 {
-    std::cerr<<"<<<calcProximityForce>>> Please Implement my body\n";
+    //std::cerr<<"<<<calcProximityForce>>> Please Implement my body\n";
 
     Util::Vector proximity_force = Util::Vector(0, 0, 0);
 
@@ -252,54 +252,36 @@ Util::Vector SocialForcesAgent::calcProximityForce(float dt)
 	SteerLib::AgentInterface * tmp_agent;
 	SteerLib::ObstacleInterface * tmp_ob;
 	Util::Vector away = Util::Vector(0, 0, 0);
-	Util::Vector away_obs = Util::Vector(0, 0, 0);
 
 	for (std::set<SteerLib::SpatialDatabaseItemPtr>::iterator neighbour = _neighbors.begin(); neighbour != _neighbors.end(); neighbour++)
 	{
 		if ((*neighbour)->isAgent())
 		{
 			tmp_agent = dynamic_cast<SteerLib::AgentInterface *>(*neighbour);
-			Util::Vector away_tmp = normalize(position() - tmp_agent->position());
+			Util::Vector away_tmp = normalize(_position - tmp_agent->position());
 
 			away = away +
-				(away_tmp *
-					(_SocialForcesParams.sf_agent_a *
-						exp(
-							(
-								(
-									(this->radius() + tmp_agent->radius())
-									-
-									(this->position() - tmp_agent->position()).length()
-								) / _SocialForcesParams.sf_agent_b
-							)
-						   )
-					)
+				(away_tmp * _SocialForcesParams.sf_agent_a *
+						exp(((this->radius() + tmp_agent->radius()) - (this->position() - tmp_agent->position()).length() ) / _SocialForcesParams.sf_agent_b)
+						   
 				);
 		}
 		else
 		{
+			tmp_ob = dynamic_cast<SteerLib::ObstacleInterface*>(*neighbour);
 			Util::Vector wall_normal = calcWallNormal(tmp_ob);
 			std::pair<Util::Point, Util::Point> line = calcWallPointsFromNormal(tmp_ob, wall_normal);
 			std::pair<float, Util::Point> min_stuff = minimum_distance(line.first, line.second, position());
 
-			Util::Vector away_obs_tmp = normalize(position() - min_stuff.second);
-			away_obs = away_obs +
-				(away_obs_tmp *
-					(_SocialForcesParams.sf_wall_a *
-						exp(
-							(
-								(
-									(this->radius()) -
-									(this->position() - min_stuff.second).length()
-								) / _SocialForcesParams.sf_wall_b
-							)
-						   )
-					)*dt
+			Util::Vector away_obs_tmp = normalize(_position - min_stuff.second);
+			away = away +
+				(away_obs_tmp * _SocialForcesParams.sf_wall_a *
+						exp(((this->radius()) - (this->position() - min_stuff.second).length() ) / _SocialForcesParams.sf_wall_b)
 				);
 		}
-		proximity_force = away + away_obs;
-		return proximity_force;
 	}
+	proximity_force = away;
+	return proximity_force;
 }
 
 
