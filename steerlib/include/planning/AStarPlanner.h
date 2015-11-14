@@ -34,6 +34,13 @@ namespace SteerLib
 			double g;
 			Util::Point point;
 			AStarPlannerNode* parent;
+			AStarPlannerNode()
+			{
+				f = DBL_MAX;
+				point = Util::Point(0, 0, 0);
+				g = DBL_MAX;
+				parent = NULL;
+			}
 			AStarPlannerNode(Util::Point _point, double _g, double _f, AStarPlannerNode* _parent)
 			{
 				f = _f;
@@ -98,6 +105,7 @@ namespace SteerLib
 			bool computePath(std::vector<Util::Point>& agent_path, Util::Point start, Util::Point goal, SteerLib::GridDatabase2D * _gSpatialDatabase, bool append_to_path = false);
 		private:
 			SteerLib::GridDatabase2D * gSpatialDatabase;
+			double heuristic_cost_estimate(Util::Point, Util::Point);			
 	};
 
 
