@@ -82,7 +82,9 @@ namespace SteerLib
 				@function getPointFromGridIndex accepts the grid index as input and returns an Util::Point corresponding to the center of that cell.
 			*/
 			Util::Point getPointFromGridIndex(int id);
+			double AStarPlanner::heuristic(Util::Point a, Util::Point b);
 
+			std::vector<Util::Point> AStarPlanner::reconstruct(AStarPlannerNode _Node, Util::Point start);
 			/*
 				@function computePath
 				DO NOT CHANGE THE DEFINITION OF THIS FUNCTION
@@ -96,9 +98,21 @@ namespace SteerLib
 			*/
 
 			bool computePath(std::vector<Util::Point>& agent_path, Util::Point start, Util::Point goal, SteerLib::GridDatabase2D * _gSpatialDatabase, bool append_to_path = false);
-		private:
-			SteerLib::GridDatabase2D * gSpatialDatabase;
+	private:
+		SteerLib::GridDatabase2D * gSpatialDatabase;
+		//Heuristic function from startIndex to endIndex
+		double heuristic_E(int start, int end);
+		double heuristic_M(int start, int end);
+		//Expands at currentNode, adding eligible neighbors to openset and modifying f,g scores and parent node
+		void neighbors(int current, int goal, std::set<int>& open_set, std::set<int> closed_set, std::map<int, double>& g_score, std::map<int, double>& f_score, std::map<int, int>& came_from);
+		//Adds found path to agent_path
+		bool reconstruct(std::vector<Util::Point>& agent_path, int current, int start, std::map<int, int>& came_from);
+		//Finds node with lowest fscore in openset
+		int getCurrent(std::set<int> open_set, std::map<int, double> g_score, std::map<int, double> f_score);
+		void AStarPlanner::init_score(std::map<int, double>& g_score, std::map<int, double>& f_score, SteerLib::GridDatabase2D * _gSpatialDatabase);
 	};
+
+
 
 
 }
