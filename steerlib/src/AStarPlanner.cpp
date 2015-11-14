@@ -23,7 +23,7 @@
 #define MAX(X,Y) ((X) > (Y) ? (X) : (Y))
 #define WEIGHT 1
 #define COST 1
-#define heuristic(X,Y) heuristic_M(X, Y)
+#define heuristic(X,Y) heuristic_E(X, Y)
 #define FAVOR_LARGE true
 
 namespace SteerLib
