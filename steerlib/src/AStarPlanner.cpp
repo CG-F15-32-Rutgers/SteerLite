@@ -202,7 +202,10 @@ namespace SteerLib
 			open_set.erase(open_set.find(current));
 
 			if (current == _goal) 
+			{
+				std::cout << "\nExpanded Nodes: " << closed_set.size();
 				return reconstruct(agent_path, current, _start, came_from);
+			}
 
 			neighbors(current, _goal, open_set, closed_set, g_score, f_score, came_from);
 		}
