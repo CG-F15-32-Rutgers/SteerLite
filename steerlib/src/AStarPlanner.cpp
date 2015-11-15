@@ -76,7 +76,7 @@ namespace SteerLib
 		unsigned int startx, startz, endx, endz;
 		gSpatialDatabase->getGridCoordinatesFromIndex(start, startx, startz);
 		gSpatialDatabase->getGridCoordinatesFromIndex(end, endx, endz);
-		return ((double)sqrt((startx - endx)*(startx - endx) + (startz - endz)*(startz - endz)));
+		return WEIGHT*((double)sqrt((startx - endx)*(startx - endx) + (startz - endz)*(startz - endz)));
 	}
 
 	double AStarPlanner::heuristic_M(int start, int end)
@@ -84,7 +84,7 @@ namespace SteerLib
 		unsigned int startx, startz, endx, endz;
 		gSpatialDatabase->getGridCoordinatesFromIndex(start, startx, startz);
 		gSpatialDatabase->getGridCoordinatesFromIndex(end, endx, endz);
-		return ((abs((double)startx - endx) + abs((double)startz - endz)));
+		return WEIGHT*((abs((double)startx - endx) + abs((double)startz - endz)));
 	}
 
 	void AStarPlanner::neighbors(int current, int goal, std::set<int>& open_set, std::set<int> closed_set, std::map<int, double>& g_score, std::map<int, double>& f_score, std::map<int, int>& came_from)
@@ -100,14 +100,14 @@ namespace SteerLib
 				{
 					double tentative_g;
 					if ((i == x) || (j == z)) 
-						tentative_g = g_score[current] + (COST*gSpatialDatabase->getTraversalCost(neighbor));
+						tentative_g = g_score[current] + (gSpatialDatabase->getTraversalCost(neighbor));
 					else 
-						tentative_g = g_score[current] + gSpatialDatabase->getTraversalCost(neighbor);
+						tentative_g = g_score[current] + COST*gSpatialDatabase->getTraversalCost(neighbor);
 
 					if (tentative_g < g_score[neighbor])
 					{
 						g_score[neighbor] = tentative_g;
-						f_score[neighbor] = g_score[neighbor] + WEIGHT*heuristic(neighbor, goal);
+						f_score[neighbor] = g_score[neighbor] + heuristic(neighbor, goal);
 						if (open_set.count(neighbor) == 1)
 							open_set.erase(open_set.find(neighbor));
 
@@ -147,7 +147,7 @@ namespace SteerLib
 				tmp = f_score[(*i)];
 				iter = i;
 			}
-			/*else if (f_score[(*i)] == tmp) 
+			else if (f_score[(*i)] == tmp) 
 			{
 				if (FAVOR_LARGE) 
 				{
@@ -158,7 +158,7 @@ namespace SteerLib
 					if (g_score[(*iter)] > g_score[(*i)]) 
 						iter = i;
 				}
-			}*/
+			}
 		}
 		return (*iter);
 	}
@@ -192,7 +192,7 @@ namespace SteerLib
 		int _start = gSpatialDatabase->getCellIndexFromLocation(start);
 		int _goal = gSpatialDatabase->getCellIndexFromLocation(goal);
 		g_score[_start] = 0.0;
-		f_score[_start] = g_score[_start] + WEIGHT*heuristic(_start, _goal);
+		f_score[_start] = g_score[_start] + heuristic(_start, _goal);
 		open_set.insert(_start);
 
 		while (!open_set.empty()) 
