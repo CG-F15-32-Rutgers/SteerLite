@@ -9,6 +9,7 @@
 #include "SocialForcesAgent.h"
 #include "SocialForcesAIModule.h"
 #include "SocialForces_Parameters.h"
+#include "C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\planning\AStarPlanner.h"
 // #include <math.h>
 
 
@@ -571,16 +572,20 @@ void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNu
 
 	SteerLib::AgentGoalInfo goalInfo = _goalQueue.front();
 	Util::Vector goalDirection;
-	if ( ! _midTermPath.empty() && (!this->hasLineOfSightTo(goalInfo.targetLocation)) )
+	if ( ! _midTermPath.empty() )
 	{
-		if (reachedCurrentWaypoint())
+		Util::Point pt = _midTermPath.at(0);
+		if ((position() - pt).lengthSquared() <= (radius()*radius())) 
 		{
-			this->updateMidTermPath();
+			this->_midTermPath.erase(this->_midTermPath.begin());
+			
 		}
 
-		this->updateLocalTarget();
+		if (!_midTermPath.empty())
+		{
+			goalDirection = normalize(this->_midTermPath.at(0) - position());
 
-		goalDirection = normalize(_currentLocalTarget - position());
+		}
 
 	}
 	else
@@ -743,18 +748,18 @@ void SocialForcesAgent::updateLocalTarget()
  */
 bool SocialForcesAgent::runLongTermPlanning()
 {
+	if (!astar) {
+		return false;
+	}
 	_midTermPath.clear();
 	//==========================================================================
 
 	// run the main a-star search here
+	SteerLib::AStarPlanner planner;
 	std::vector<Util::Point> agentPath;
 	Util::Point pos =  position();
 
-	if ( !gSpatialDatabase->findPath(pos, _goalQueue.front().targetLocation,
-			agentPath, (unsigned int) 50000))
-	{
-		return false;
-	}
+	planner.computePath(agentPath, pos, _goalQueue.front().targetLocation, gSpatialDatabase, true);
 
 	for  (int i=1; i <  agentPath.size(); i++)
 	{

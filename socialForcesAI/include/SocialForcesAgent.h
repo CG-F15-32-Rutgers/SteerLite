@@ -108,6 +108,7 @@ class SocialForcesAgent : public SteerLib::AgentInterface
         bool reachedCurrentWaypoint();
         void updateMidTermPath();
         bool hasLineOfSightTo(Util::Point point);
+		bool astar = false;
 
 
         void calcNextStep(float dt);
