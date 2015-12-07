@@ -29,7 +29,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E8538DD0-1CE9-43A4-9640-B0B79DE41651}</ProjectGuid>
     <RootNamespace>steertool</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

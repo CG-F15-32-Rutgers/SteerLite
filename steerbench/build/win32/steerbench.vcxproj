@@ -29,7 +29,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{17285D95-1A5E-45E1-90E5-4B576E5F6D86}</ProjectGuid>
     <RootNamespace>steerbench</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
