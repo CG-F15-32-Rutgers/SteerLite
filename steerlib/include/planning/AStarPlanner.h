@@ -62,6 +62,7 @@ namespace SteerLib
 		public:
 			AStarPlanner();
 			~AStarPlanner();
+			int AstarWeight = 1;
 			// NOTE: There are four indices that need to be disambiguated
 			// -- Util::Points in 3D space(with Y=0)
 			// -- (double X, double Z) Points with the X and Z coordinates of the actual points

@@ -20,6 +20,7 @@
 // #include "SimpleAgent.h"
 // #include "SocialForcesAIModule.h"
 #include "SocialForces_Parameters.h"
+#include "planning\AStarPlanner.h"
 
 
 /**
@@ -108,7 +109,8 @@ class SocialForcesAgent : public SteerLib::AgentInterface
         bool reachedCurrentWaypoint();
         void updateMidTermPath();
         bool hasLineOfSightTo(Util::Point point);
-		bool astar = true;
+		bool astar = false;
+		SteerLib::AStarPlanner planner;
 
 
         void calcNextStep(float dt);

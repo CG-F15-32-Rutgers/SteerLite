@@ -18,10 +18,10 @@
 
 #define COLLISION_COST  1000
 #define GRID_STEP  1
-#define OBSTACLE_CLEARANCE 1
+#define OBSTACLE_CLEARANCE 0
 #define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
 #define MAX(X,Y) ((X) > (Y) ? (X) : (Y))
-#define WEIGHT 8
+#define WEIGHT 1
 #define COST 1
 #define heuristic(X,Y) heuristic_E(X, Y)
 #define FAVOR_LARGE true
@@ -76,7 +76,7 @@ namespace SteerLib
 		unsigned int startx, startz, endx, endz;
 		gSpatialDatabase->getGridCoordinatesFromIndex(start, startx, startz);
 		gSpatialDatabase->getGridCoordinatesFromIndex(end, endx, endz);
-		return WEIGHT*((double)sqrt((startx - endx)*(startx - endx) + (startz - endz)*(startz - endz)));
+		return AstarWeight*((double)sqrt((startx - endx)*(startx - endx) + (startz - endz)*(startz - endz)));
 	}
 
 	double AStarPlanner::heuristic_M(int start, int end)
@@ -84,7 +84,7 @@ namespace SteerLib
 		unsigned int startx, startz, endx, endz;
 		gSpatialDatabase->getGridCoordinatesFromIndex(start, startx, startz);
 		gSpatialDatabase->getGridCoordinatesFromIndex(end, endx, endz);
-		return WEIGHT*((abs((double)startx - endx) + abs((double)startz - endz)));
+		return AstarWeight*((abs((double)startx - endx) + abs((double)startz - endz)));
 	}
 
 	void AStarPlanner::neighbors(int current, int goal, std::set<int>& open_set, std::set<int> closed_set, std::map<int, double>& g_score, std::map<int, double>& f_score, std::map<int, int>& came_from)

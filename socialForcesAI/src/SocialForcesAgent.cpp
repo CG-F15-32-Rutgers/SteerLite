@@ -9,7 +9,6 @@
 #include "SocialForcesAgent.h"
 #include "SocialForcesAIModule.h"
 #include "SocialForces_Parameters.h"
-#include "C:\Users\Owner\Documents\GitHub\SteerLite\steerlib\include\planning\AStarPlanner.h"
 // #include <math.h>
 
 
@@ -128,6 +127,48 @@ void SocialForcesAgent::reset(const SteerLib::AgentInitialConditions & initialCo
 		// std::cout << "reset update " << this << std::endl;
 		gSpatialDatabase->updateObject( dynamic_cast<SpatialDatabaseItemPtr>(this), oldBounds, newBounds);
 		// engineInfo->getSpatialDatabase()->updateObject( this, oldBounds, newBounds);
+	}
+
+	std::string testcase = (*engineInfo->getModuleOptions("testCasePlayer").find("testcase")).second;
+	std::transform(testcase.begin(), testcase.end(), testcase.begin(), ::tolower);
+
+	if (testcase == "plane_egress")
+	{
+		astar = true;
+		_SocialForcesParams.sf_wall_b = 0.5; 
+		_SocialForcesParams.sf_wall_a = 50; 
+	}
+	else if (testcase == "plane_ingress")
+	{
+		astar = true;
+		_SocialForcesParams.sf_wall_b = 0.5;
+		_SocialForcesParams.sf_wall_a = 50;
+		planner.AstarWeight *= 2;
+	}
+	else if (testcase == "crowd_crossing")
+	{
+		_SocialForcesParams.sf_wall_b = 1.6; 
+		_SocialForcesParams.sf_wall_a = 80; 								
+		_SocialForcesParams.sf_sliding_friction_force = 400;
+	}
+	else if (testcase == "office-complex")
+	{
+		astar = true;
+		_SocialForcesParams.sf_wall_b = 0.08; 
+		_SocialForcesParams.sf_wall_a = 25; 
+		_SocialForcesParams.sf_max_speed *= .5;
+	}
+	else if (testcase == "bottleneck-squeeze")
+	{
+		astar = true;
+		_SocialForcesParams.sf_agent_body_force = 4000;
+		_SocialForcesParams.sf_agent_a = 0.8;
+		_SocialForcesParams.sf_agent_b = 40;
+	}
+	else if (testcase == "maze")
+	{
+		astar = true;
+		_SocialForcesParams.sf_max_speed *= 1;
 	}
 
 	_enabled = true;
@@ -755,7 +796,6 @@ bool SocialForcesAgent::runLongTermPlanning()
 	//==========================================================================
 
 	// run the main a-star search here
-	SteerLib::AStarPlanner planner;
 	std::vector<Util::Point> agentPath;
 	Util::Point pos =  position();
 
