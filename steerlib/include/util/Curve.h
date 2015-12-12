@@ -85,7 +85,7 @@ namespace Util {
 		std::vector<CurvePoint> controlPoints;
 
 		// Type of curve
-		int type;
+		int type = catmullCurve;
 
 		// Check Roboustness
 		bool checkRobust();

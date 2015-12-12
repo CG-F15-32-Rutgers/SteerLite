@@ -129,14 +129,15 @@ void SocialForcesAgent::reset(const SteerLib::AgentInitialConditions & initialCo
 		// engineInfo->getSpatialDatabase()->updateObject( this, oldBounds, newBounds);
 	}
 
-	std::string testcase = (*engineInfo->getModuleOptions("testCasePlayer").find("testcase")).second;
+	testcase = (*engineInfo->getModuleOptions("testCasePlayer").find("testcase")).second;
 	std::transform(testcase.begin(), testcase.end(), testcase.begin(), ::tolower);
 
 	if (testcase == "plane_egress")
 	{
 		astar = true;
-		_SocialForcesParams.sf_wall_b = 0.5; 
-		_SocialForcesParams.sf_wall_a = 50; 
+		_SocialForcesParams.sf_wall_b = 0.05; 
+		_SocialForcesParams.sf_wall_a = 30;
+		planner.AstarWeight *= 2;
 	}
 	else if (testcase == "plane_ingress")
 	{
@@ -150,25 +151,49 @@ void SocialForcesAgent::reset(const SteerLib::AgentInitialConditions & initialCo
 		_SocialForcesParams.sf_wall_b = 1.6; 
 		_SocialForcesParams.sf_wall_a = 80; 								
 		_SocialForcesParams.sf_sliding_friction_force = 400;
+		if (_radius == 1)
+		{
+			this->agent_mass = 5;
+		}
+		_SocialForcesParams.sf_max_speed *= 2;
 	}
 	else if (testcase == "office-complex")
 	{
 		astar = true;
 		_SocialForcesParams.sf_wall_b = 0.08; 
 		_SocialForcesParams.sf_wall_a = 25; 
-		_SocialForcesParams.sf_max_speed *= .5;
+		_SocialForcesParams.sf_max_speed *= 2;
+		planner.AstarWeight *= 4;
+
 	}
 	else if (testcase == "bottleneck-squeeze")
 	{
 		astar = true;
 		_SocialForcesParams.sf_agent_body_force = 4000;
-		_SocialForcesParams.sf_agent_a = 0.8;
-		_SocialForcesParams.sf_agent_b = 40;
+		_SocialForcesParams.sf_agent_a = 50;
+		_SocialForcesParams.sf_agent_b = 0.9;
+		planner.AstarWeight *= 32;
+		_SocialForcesParams.sf_max_speed *= 2;
+
 	}
 	else if (testcase == "maze")
 	{
 		astar = true;
 		_SocialForcesParams.sf_max_speed *= 1;
+	}
+	else if (testcase == "hallway-four-way-rounded-roundabout")
+	{
+		_SocialForcesParams.sf_wall_b = 1.6;
+		_SocialForcesParams.sf_wall_a = 80;
+	}
+	else if (testcase == "a5_custom" || "a5_custom.xml")
+	{
+		_SocialForcesParams.sf_max_speed *= 10;
+		if (_radius == 2)
+		{
+			this->agent_mass = 10;
+		}
+		_SocialForcesParams.sf_agent_body_force = 400;
 	}
 
 	_enabled = true;
@@ -330,7 +355,7 @@ Util::Vector SocialForcesAgent::calcProximityForce(float dt)
 Vector SocialForcesAgent::calcGoalForce(Vector _goalDirection, float _dt)
 {
     //std::cerr<<"<<<calcGoalForce>>> Please Implement my body\n";
-	return AGENT_MASS * ((PREFERED_SPEED * _goalDirection - velocity()) / _dt);
+	return agent_mass * ((PREFERED_SPEED * _goalDirection - velocity()) / _dt);
 }
 
 
@@ -603,7 +628,7 @@ bool SocialForcesAgent::hasLineOfSightTo(Util::Point target)
 void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNumber)
 {
 	// std::cout << "_SocialForcesParams.rvo_max_speed " << _SocialForcesParams._SocialForcesParams.rvo_max_speed << std::endl;
-	Util::AutomaticFunctionProfiler profileThisFunction( &SocialForcesGlobals::gPhaseProfilers->aiProfiler );
+	Util::AutomaticFunctionProfiler profileThisFunction(&SocialForcesGlobals::gPhaseProfilers->aiProfiler);
 	if (!enabled())
 	{
 		return;
@@ -613,13 +638,14 @@ void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNu
 
 	SteerLib::AgentGoalInfo goalInfo = _goalQueue.front();
 	Util::Vector goalDirection;
-	if ( ! _midTermPath.empty() )
+
+	if (!_midTermPath.empty())
 	{
 		Util::Point pt = _midTermPath.at(0);
-		if ((position() - pt).lengthSquared() <= (radius()*radius())) 
+		if ((position() - pt).lengthSquared() <= (radius()*radius()))
 		{
 			this->_midTermPath.erase(this->_midTermPath.begin());
-			
+
 		}
 
 		if (!_midTermPath.empty())
@@ -634,44 +660,119 @@ void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNu
 		goalDirection = normalize(goalInfo.targetLocation - position());
 	}
 
-    /*
-     *  Goal Force
-     */
-    Util::Vector prefForce = calcGoalForce( goalDirection, dt );
+	/*
+	 *  Goal Force
+	 */
+	Util::Vector prefForce = calcGoalForce(goalDirection, dt);
 
-    /*
-     *  Repulsion Force
-     */
+	/*
+	 *  Repulsion Force
+	 */
 	Util::Vector repulsionForce = calcRepulsionForce(dt);
 
-	if ( repulsionForce.x != repulsionForce.x)
+	if (repulsionForce.x != repulsionForce.x)
 	{
 		std::cout << "Found some nan" << std::endl;
 		// repulsionForce = velocity() * 0;
 	}
 
-    /*
-     *  Proximity Force
-     */
+	/*
+	 *  Proximity Force
+	 */
 	Util::Vector proximityForce = calcProximityForce(dt);
 
-// #define _DEBUG_ 1
+	// #define _DEBUG_ 1
 #ifdef _DEBUG_
 	std::cout << "agent" << id() << " repulsion force " << repulsionForce << std::endl;
 	std::cout << "agent" << id() << " proximity force " << proximityForce << std::endl;
 	std::cout << "agent" << id() << " pref force " << prefForce << std::endl;
 #endif
 	// _velocity = _newVelocity;
-	int alpha=1;
-	if ( repulsionForce.length() > 0.0)
+	int alpha = 1;
+	if (repulsionForce.length() > 0.0)
 	{
-		alpha=0;
+		alpha = 0;
 	}
 
-	Util::Vector acceleration = (prefForce + repulsionForce + proximityForce) / AGENT_MASS;
+	Util::Vector acceleration = (prefForce + repulsionForce + proximityForce) / agent_mass;
 	_velocity = velocity() + acceleration * dt;
 	_velocity = clamp(velocity(), _SocialForcesParams.sf_max_speed);
-	_velocity.y=0.0f;
+	_velocity.y = 0.0f;
+
+	if (testcase == "crowd_crossing")
+	{
+		if ((this->position().z > 8 || this->position().z < -8) && frameNumber < 1600)
+		{
+			this->_velocity *= 0.0f;
+		}
+	}
+	else if (testcase == "a5_custom" || testcase == "a5_custom.xml")
+	{
+		if (_radius == .25 && frameNumber < 700)
+		{
+			this->_velocity *= 0.1;
+		}
+		else if (_radius == .75 && frameNumber < 1050)
+		{
+			this->_velocity *= 0.1;
+		}
+		else if (_radius == .5 && frameNumber < 2700)
+		{
+			this->_velocity *= .1;
+		}
+	}
+	else if (astar = true)
+	{
+		if (testcase == "office-complex") 
+		{
+			
+		}
+		else if (testcase == "plane_ingress") 
+		{
+			if (id() % 2 == 0 && frameNumber < 1000)
+			{
+				this->_velocity *= 0.0f;
+			}
+		}
+		else if (testcase == "plane_egress")
+		{
+			if(id() % 5 == 3 && frameNumber < 1500)
+				this->_velocity *= 0.0f;
+			else if (id() % 5 == 1 && frameNumber < 3000)
+				this->_velocity *= 0.0f;
+			else if (id() % 5 == 4 && frameNumber < 4500)
+				this->_velocity *= 0.0f;
+			else if (id() % 5 == 0 && frameNumber < 6000)
+				this->_velocity *= 0.0f;
+		}
+		else if (testcase == "bottleneck_squeeze")
+		{
+			if (this->position().x >= 80 && frameNumber < 4500)
+			{
+				this->_velocity *= 0.0f;
+			}
+			else if (this->position().x >= 70 && frameNumber < 3750)
+			{
+				this->_velocity *= 0.0f;
+			}
+			else if (this->position().x >= 60 && frameNumber < 3000)
+			{
+				this->_velocity *= 0.0f;
+			}
+			else if (this->position().x >= 50 && frameNumber < 2250)
+			{
+				this->_velocity *= 0.0f;
+			}
+			else if (this->position().x >= 40 && frameNumber < 1500)
+			{
+				this->_velocity *= 0.0f;
+			}
+			else if (this->position().x >= 30 && frameNumber < 750)
+			{
+				this->_velocity *= 0.0f;
+			}
+		}
+	}
 #ifdef _DEBUG_
 	std::cout << "agent" << id() << " speed is " << velocity().length() << std::endl;
 #endif

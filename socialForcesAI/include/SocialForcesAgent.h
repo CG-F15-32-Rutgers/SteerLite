@@ -111,6 +111,8 @@ class SocialForcesAgent : public SteerLib::AgentInterface
         bool hasLineOfSightTo(Util::Point point);
 		bool astar = false;
 		SteerLib::AStarPlanner planner;
+		float agent_mass = 1;
+		std::string testcase;
 
 
         void calcNextStep(float dt);
